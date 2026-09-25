@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YMaz Style - Bootstrap 5 Template</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --primary:#0d6efd;
+    --dark:#0b1c33;
+    --accent:#00c2a8;
+  }
+  *{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins',sans-serif;
+    color:#333;
+    overflow-x:hidden;
+  }
+
+  /* ===== TOP BAR ===== */
+  .topbar{
+    background:var(--dark);
+    color:#c9d3e0;
+    font-size:14px;
+    padding:8px 0;
+  }
+  .topbar a{color:#c9d3e0;text-decoration:none;margin-left:15px;}
+  .topbar a:hover{color:#fff;}
+
+  /* ===== NAVBAR ===== */
+  .navbar{
+    background:#fff;
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+    padding:15px 0;
+  }
+  .navbar-brand{
+    font-weight:800;
+    font-size:26px;
+    color:var(--dark)!important;
+    letter-spacing:1px;
+  }
+  .navbar-brand span{color:var(--primary);}
+  .navbar-nav .nav-link{
+    font-weight:500;
+    color:var(--dark)!important;
+    margin:0 10px;
+    position:relative;
+  }
+  .navbar-nav .nav-link::after{
+    content:'';
+    position:absolute;
+    width:0;height:2px;
+    bottom:0;left:0;
+    background:var(--primary);
+    transition:.3s;
+  }
+  .navbar-nav .nav-link:hover::after{width:100%;}
+  .btn-primary-custom{
+    background:var(--primary);
+    border:none;
+    padding:10px 26px;
+    border-radius:50px;
+    font-weight:600;
+    color:#fff;
+    transition:.3s;
+  }
+  .btn-primary-custom:hover{
+    background:var(--dark);
+    transform:translateY(-2px);
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    background:
+      linear-gradient(rgba(11,28,51,.85), rgba(11,28,51,.75)),
+      url('https://picsum.photos/1920/1080?random=1') center/cover no-repeat;
+    color:#fff;
+    padding:140px 0 120px;
+    text-align:center;
+  }
+  .hero h1{
+    font-size:52px;
+    font-weight:800;
+    line-height:1.2;
+    margin-bottom:20px;
+  }
+  .hero h1 span{color:var(--accent);}
+  .hero p{
+    font-size:18px;
+    max-width:700px;
+    margin:0 auto 35px;
+    opacity:.9;
+  }
+  .btn-outline-light-custom{
+    border:2px solid #fff;
+    color:#fff;
+    padding:10px 26px;
+    border-radius:50px;
+    font-weight:600;
+    margin-left:10px;
+    transition:.3s;
+  }
+  .btn-outline-light-custom:hover{
+    background:#fff;color:var(--dark);
+  }
+
+  /* ===== SECTION TITLE ===== */
+  .section{padding:90px 0;}
+  .section-title{
+    text-align:center;
+    margin-bottom:60px;
+  }
+  .section-title small{
+    color:var(--primary);
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+  }
+  .section-title h2{
+    font-size:38px;
+    font-weight:700;
+    color:var(--dark);
+    margin-top:10px;
+  }
+  .section-title h2 span{color:var(--primary);}
+
+  /* ===== FEATURES ===== */
+  .feature-card{
+    background:#fff;
+    border-radius:16px;
+    padding:40px 25px;
+    text-align:center;
+    box-shadow:0 10px 40px rgba(0,0,0,.06);
+    transition:.4s;
+    height:100%;
+  }
+  .feature-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 50px rgba(13,110,253,.18);
+  }
+  .feature-icon{
+    width:70px;height:70px;
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    color:#fff;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:30px;
+    margin:0 auto 22px;
+  }
+  .feature-card h5{
+    font-weight:700;
+    color:var(--dark);
+    margin-bottom:12px;
+  }
+  .feature-card p{color:#666;font-size:15px;margin:0;}
+
+  /* ===== ABOUT ===== */
+  .about-img img{
+    border-radius:20px;
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
+    width:100%;
+  }
+  .about-content h2{
+    font-size:34px;
+    font-weight:700;
+    color:var(--dark);
+    margin-bottom:20px;
+  }
+  .about-content h2 span{color:var(--primary);}
+  .about-content p{color:#666;margin-bottom:18px;}
+  .about-list{list-style:none;padding:0;}
+  .about-list li{
+    padding:8px 0;
+    font-weight:500;
+    color:var(--dark);
+  }
+  .about-list li i{color:var(--accent);margin-right:10px;}
+
+  /* ===== COUNTERS ===== */
+  .counter-section{
+    background:linear-gradient(135deg,var(--dark),#12335f);
+    color:#fff;
+    padding:70px 0;
+  }
+  .counter-box{text-align:center;}
+  .counter-box i{
+    font-size:38px;
+    color:var(--accent);
+    margin-bottom:12px;
+  }
+  .counter-box h3{
+    font-size:40px;
+    font-weight:800;
+    margin:0;
+  }
+  .counter-box p{opacity:.85;margin:0;}
+
+  /* ===== SERVICES ===== */
+  .service-card{
+    background:#fff;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,.07);
+    transition:.4s;
+    height:100%;
+  }
+  .service-card:hover{transform:translateY(-8px);}
+  .service-card img{width:100%;height:200px;object-fit:cover;}
+  .service-body{padding:25px;}
+  .service-body h5{font-weight:700;color:var(--dark);}
+  .service-body p{color:#666;font-size:15px;}
+  .service-body a{
+    color:var(--primary);
+    font-weight:600;
+    text-decoration:none;
+  }
+
+  /* ===== CTA ===== */
+  .cta{
+    background:
+      linear-gradient(rgba(13,110,253,.9), rgba(0,194,168,.85)),
+      url('https://picsum.photos/1920/600?random=2') center/cover;
+    color:#fff;
+    padding:80px 0;
+    text-align:center;
+  }
+  .cta h2{font-size:38px;font-weight:800;}
+  .cta p{opacity:.95;max-width:650px;margin:15px auto 30px;}
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--dark);
+    color:#a9b6c9;
+    padding:70px 0 0;
+  }
+  footer h5{
+    color:#fff;
+    font-weight:700;
+    margin-bottom:20px;
+  }
+  footer a{
+    color:#a9b6c9;
+    text-decoration:none;
+    display:block;
+    padding:5px 0;
+    transition:.3s;
+  }
+  footer a:hover{color:var(--accent);padding-left:5px;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    margin-top:50px;
+    padding:20px 0;
+    text-align:center;
+    font-size:14px;
+  }
+  .social a{
+    display:inline-flex;
+    width:38px;height:38px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    align-items:center;justify-content:center;
+    margin-right:8px;
+    color:#fff!important;
+  }
+  .social a:hover{background:var(--primary);padding-left:0;}
+
+  @media(max-width:768px){
+    .hero h1{font-size:34px;}
+    .hero{padding:100px 0 80px;}
+    .section{padding:60px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <div>
+      <i class="bi bi-envelope"></i> info@yourdomain.com
+      <span class="ms-3"><i class="bi bi-telephone"></i> +91 00000 00000</span>
+    </div>
+    <div class="social">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-twitter-x"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+      <a href="#"><i class="bi bi-linkedin"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <!-- Replace with your logo image: <img src="logo.png" height="40"> -->
+      Y<span>MAZ</span>
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-lg-3">
+          <a href="#" class="btn btn-primary-custom">Get Started</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="container">
+    <h1>Welcome to <span>YMAZ</span><br>Modern Solutions for Your Business</h1>
+    <p>We deliver high-quality services and innovative solutions to help your business grow faster and smarter.</p>
+    <a href="#services" class="btn btn-primary-custom">Our Services</a>
+    <a href="#contact" class="btn btn-outline-light-custom">Contact Us</a>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-title">
+      <small>Why Choose Us</small>
+      <h2>Our <span>Key Features</span></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-lightning-charge"></i></div>
+          <h5>Fast Performance</h5>
+          <p>Optimized solutions that deliver speed and reliability for your business.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+          <h5>Secure & Reliable</h5>
+          <p>Top-level security with trusted and dependable infrastructure.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="bi bi-people"></i></div>
+          <h5>Expert Team</h5>
+          <p>Skilled professionals dedicated to your success and growth.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section bg-light" id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 about-img">
+        <img src="https://picsum.photos/700/500?random=3" alt="About">
+      </div>
+      <div class="col-lg-6 about-content">
+        <small class="text-primary fw-bold">ABOUT US</small>
+        <h2>We Build <span>Digital Success</span> Stories</h2>
+        <p>We are a passionate team providing top-notch services to clients worldwide. Our mission is to deliver value through innovation and dedication.</p>
+        <ul class="about-list">
+          <li><i class="bi bi-check-circle-fill"></i> Quality Assurance</li>
+          <li><i class="bi bi-check-circle-fill"></i> 24/7 Customer Support</li>
+          <li><i class="bi bi-check-circle-fill"></i> Affordable Pricing</li>
+          <li><i class="bi bi-check-circle-fill"></i> Trusted by Thousands</li>
+        </ul>
+        <a href="#" class="btn btn-primary-custom mt-3">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COUNTERS ===== -->
+<section class="counter-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-6 col-md-3 counter-box">
+        <i class="bi bi-emoji-smile"></i>
+        <h3>1500+</h3>
+        <p>Happy Clients</p>
+      </div>
+      <div class="col-6 col-md-3 counter-box">
+        <i class="bi bi-briefcase"></i>
+        <h3>250+</h3>
+        <p>Projects Done</p>
+      </div>
+      <div class="col-6 col-md-3 counter-box">
+        <i class="bi bi-people"></i>
+        <h3>50+</h3>
+        <p>Team Members</p>
+      </div>
+      <div class="col-6 col-md-3 counter-box">
+        <i class="bi bi-award"></i>
+        <h3>15+</h3>
+        <p>Years Experience</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-title">
+      <small>What We Do</small>
+      <h2>Our <span>Services</span></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="service-card">
+          <img src="https://picsum.photos/500/300?random=4" alt="">
+          <div class="service-body">
+            <h5>Web Development</h5>
+            <p>Modern, responsive websites built with the latest technology.</p>
+            <a href="#">Read More →</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card">
+          <img src="https://picsum.photos/500/300?random=5" alt="">
+          <div class="service-body">
+            <h5>Digital Marketing</h5>
+            <p>Grow your brand online with proven marketing strategies.</p>
+            <a href="#">Read More →</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card">
+          <img src="https://picsum.photos/500/300?random=6" alt="">
+          <div class="service-body">
+            <h5>Business Consulting</h5>
+            <p>Expert guidance to take your business to the next level.</p>
+            <a href="#">Read More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+  <div class="container">
+    <h2>Ready to Start Your Project?</h2>
+    <p>Let's work together to bring your ideas to life. Get in touch with our team today.</p>
+    <a href="#contact" class="btn btn-light btn-lg rounded-pill px-4 fw-semibold">Contact Us Now</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="contact">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h5>YMAZ</h5>
+        <p>We provide modern and reliable solutions for businesses worldwide.</p>
+        <div class="social mt-3">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h5>Links</h5>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="col-md-3">
+        <h5>Services</h5>
+        <a href="#">Web Development</a>
+        <a href="#">Digital Marketing</a>
+        <a href="#">Consulting</a>
+        <a href="#">Support</a>
+      </div>
+      <div class="col-md-3">
+        <h5>Contact</h5>
+        <a href="#"><i class="bi bi-geo-alt"></i> Your Address, India</a>
+        <a href="#"><i class="bi bi-telephone"></i> +91 00000 00000</a>
+        <a href="#"><i class="bi bi-envelope"></i> info@yourdomain.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 YMAZ. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

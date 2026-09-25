@@ -1,0 +1,1954 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>YMAZ — Engineering The Unseen</title>
+
+    <meta name="description"
+          content="YMAZ creates software, hardware, robotics and intelligent engineering systems.">
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           ROOT
+        ===================================================== */
+
+        :root {
+            --black: #080808;
+            --white: #f5f5f1;
+            --paper: #eeeee9;
+            --gray: #8a8a84;
+            --line: #d5d5cf;
+            --lime: #c8ff00;
+            --blue: #506cff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--black);
+            font-family: "Inter", sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container-wide {
+            width: min(1400px, 92%);
+            margin: auto;
+        }
+
+        .mono {
+            font-family: "DM Mono", monospace;
+        }
+
+
+        /* =====================================================
+           TECHNICAL BACKGROUND
+        ===================================================== */
+
+        .technical-grid {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            opacity: .35;
+
+            background-image:
+                linear-gradient(
+                    to right,
+                    rgba(0,0,0,.055) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,.055) 1px,
+                    transparent 1px
+                );
+
+            background-size: 60px 60px;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+
+            background: rgba(245,245,241,.88);
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-inner {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: var(--black);
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .logo-mark {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            margin-left: 4px;
+            background: var(--lime);
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        .nav-links a {
+            color: #44443f;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .nav-contact {
+            border: 1px solid var(--black);
+            padding: 11px 17px;
+            color: var(--black) !important;
+        }
+
+        .nav-contact:hover {
+            background: var(--black);
+            color: white !important;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 100vh;
+            padding-top: 76px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-left {
+            padding: 90px 0;
+        }
+
+        .eyebrow {
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            color: #555550;
+        }
+
+        .eyebrow span {
+            color: var(--blue);
+        }
+
+        .hero-heading {
+            font-size: clamp(65px, 10vw, 155px);
+            line-height: .78;
+            letter-spacing: -10px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .hero-heading .outline {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--black);
+        }
+
+        .hero-heading .lime {
+            background: var(--lime);
+            padding: 0 10px;
+        }
+
+        .hero-copy {
+            max-width: 530px;
+            margin-top: 50px;
+            font-size: 17px;
+            line-height: 1.7;
+            color: #555550;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .btn-black {
+            background: var(--black);
+            color: white;
+            padding: 15px 25px;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--black);
+            transition: .3s;
+        }
+
+        .btn-black:hover {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: white;
+        }
+
+        .btn-white {
+            color: var(--black);
+            padding: 15px 25px;
+            border: 1px solid #aaa9a3;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-white:hover {
+            border-color: var(--black);
+        }
+
+
+        /* =====================================================
+           HERO ENGINEERING OBJECT
+        ===================================================== */
+
+        .engineering-visual {
+            min-height: 650px;
+            background: var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .engineering-visual::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.06) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.06) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
+        }
+
+        .visual-ring {
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border: 1px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .visual-ring::before,
+        .visual-ring::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 50%;
+        }
+
+        .visual-ring::before {
+            inset: 50px;
+        }
+
+        .visual-ring::after {
+            inset: 110px;
+        }
+
+        .visual-core {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            background: var(--lime);
+            animation: coreMove 5s ease-in-out infinite;
+        }
+
+        .visual-core::after {
+            content: "";
+            position: absolute;
+            inset: 22px;
+            background: var(--black);
+        }
+
+        .visual-line {
+            position: absolute;
+            background: white;
+            opacity: .45;
+        }
+
+        .line-horizontal {
+            width: 100%;
+            height: 1px;
+            top: 50%;
+        }
+
+        .line-vertical {
+            height: 100%;
+            width: 1px;
+            left: 50%;
+        }
+
+        .visual-code {
+            position: absolute;
+            color: rgba(255,255,255,.55);
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        .code-one {
+            top: 25px;
+            left: 25px;
+        }
+
+        .code-two {
+            right: 25px;
+            bottom: 25px;
+            text-align: right;
+        }
+
+        .visual-label {
+            position: absolute;
+            color: white;
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .label-top {
+            top: 30px;
+            right: 30px;
+        }
+
+        .label-bottom {
+            bottom: 30px;
+            left: 30px;
+        }
+
+        @keyframes coreMove {
+
+            0%,100% {
+                transform: translate(-50%, -50%) rotate(45deg) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotate(135deg) scale(1.12);
+            }
+        }
+
+
+        /* =====================================================
+           TICKER
+        ===================================================== */
+
+        .ticker {
+            background: var(--black);
+            color: white;
+            overflow: hidden;
+            border-top: 1px solid var(--black);
+            border-bottom: 1px solid var(--black);
+        }
+
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: tickerMove 30s linear infinite;
+        }
+
+        .ticker-item {
+            padding: 17px 35px;
+            font-family: "DM Mono", monospace;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .ticker-item::before {
+            content: "✦";
+            color: var(--lime);
+            margin-right: 25px;
+        }
+
+        @keyframes tickerMove {
+
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+
+        /* =====================================================
+           INTRO
+        ===================================================== */
+
+        .section {
+            padding: 140px 0;
+        }
+
+        .section-number {
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
+            color: var(--blue);
+            letter-spacing: 2px;
+        }
+
+        .intro-title {
+            font-size: clamp(45px, 6vw, 90px);
+            font-weight: 800;
+            letter-spacing: -5px;
+            line-height: .95;
+        }
+
+        .intro-title em {
+            font-family: Georgia, serif;
+            font-weight: 400;
+        }
+
+        .intro-text {
+            font-size: 19px;
+            line-height: 1.8;
+            color: #64645e;
+        }
+
+
+        /* =====================================================
+           BENTO SERVICES
+        ===================================================== */
+
+        .services-section {
+            background: var(--black);
+            color: white;
+            padding: 140px 0;
+        }
+
+        .dark-number {
+            color: var(--lime);
+        }
+
+        .services-heading {
+            font-size: clamp(50px, 7vw, 105px);
+            line-height: .85;
+            letter-spacing: -6px;
+            font-weight: 900;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 15px;
+            margin-top: 70px;
+        }
+
+        .service-card {
+            min-height: 320px;
+            border: 1px solid #303030;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: .35s;
+        }
+
+        .service-card:hover {
+            border-color: var(--lime);
+            transform: translateY(-5px);
+        }
+
+        .service-card.large {
+            min-height: 655px;
+        }
+
+        .service-card:nth-child(3) {
+            min-height: 320px;
+        }
+
+        .service-index {
+            font-family: "DM Mono", monospace;
+            color: #777;
+            font-size: 11px;
+        }
+
+        .service-icon {
+            font-size: 38px;
+            margin-top: 50px;
+            color: var(--lime);
+        }
+
+        .service-card h3 {
+            font-size: 30px;
+            margin-top: 25px;
+            font-weight: 800;
+        }
+
+        .service-card p {
+            color: #999;
+            max-width: 430px;
+            line-height: 1.7;
+            margin-top: 15px;
+        }
+
+        .service-watermark {
+            position: absolute;
+            right: -25px;
+            bottom: -60px;
+            font-size: 180px;
+            font-weight: 900;
+            color: rgba(255,255,255,.025);
+        }
+
+
+        /* =====================================================
+           ENGINEERING NUMBERS
+        ===================================================== */
+
+        .numbers {
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .number-box {
+            padding: 70px 30px;
+            border-right: 1px solid var(--line);
+        }
+
+        .number-box:last-child {
+            border-right: 0;
+        }
+
+        .big-number {
+            font-size: clamp(50px, 6vw, 90px);
+            font-weight: 900;
+            letter-spacing: -5px;
+        }
+
+        .number-label {
+            font-family: "DM Mono", monospace;
+            color: var(--gray);
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        .project-row {
+            border-top: 1px solid var(--line);
+            padding: 45px 0;
+            transition: .3s;
+        }
+
+        .project-row:last-child {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .project-row:hover {
+            padding-left: 20px;
+            background: #e7e7e1;
+        }
+
+        .project-category {
+            font-family: "DM Mono", monospace;
+            color: var(--blue);
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .project-name {
+            font-size: clamp(28px, 4vw, 55px);
+            font-weight: 800;
+            letter-spacing: -3px;
+        }
+
+        .project-arrow {
+            font-size: 30px;
+        }
+
+
+        /* =====================================================
+           MANIFESTO
+        ===================================================== */
+
+        .manifesto {
+            background: var(--lime);
+            padding: 130px 0;
+            overflow: hidden;
+        }
+
+        .manifesto-text {
+            font-size: clamp(50px, 8vw, 125px);
+            font-weight: 900;
+            line-height: .85;
+            letter-spacing: -8px;
+            text-transform: uppercase;
+        }
+
+        .manifesto-text span {
+            font-family: Georgia, serif;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact-section {
+            background: var(--black);
+            color: white;
+            padding: 140px 0;
+        }
+
+        .contact-title {
+            font-size: clamp(55px, 9vw, 140px);
+            line-height: .8;
+            font-weight: 900;
+            letter-spacing: -9px;
+        }
+
+        .contact-title span {
+            color: var(--lime);
+        }
+
+        .contact-copy {
+            color: #92928d;
+            max-width: 480px;
+            line-height: 1.8;
+            margin-top: 35px;
+        }
+
+        .contact-form {
+            border: 1px solid #303030;
+            padding: 35px;
+        }
+
+        .form-control,
+        .form-select {
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid #444;
+            border-radius: 0;
+            color: white;
+            padding: 17px 0;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background: transparent;
+            color: white;
+            box-shadow: none;
+            border-color: var(--lime);
+        }
+
+        .form-control::placeholder {
+            color: #777;
+        }
+
+        .form-select option {
+            color: black;
+        }
+
+        .form-label {
+            color: #888;
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: var(--black);
+            color: white;
+            border-top: 1px solid #292929;
+            padding: 60px 0 25px;
+        }
+
+        .footer-logo {
+            font-size: 35px;
+            font-weight: 900;
+            letter-spacing: -3px;
+        }
+
+        .footer-desc {
+            color: #777;
+            max-width: 350px;
+            line-height: 1.7;
+            margin-top: 15px;
+        }
+
+        .footer-heading {
+            font-family: "DM Mono", monospace;
+            color: var(--lime);
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            display: block;
+            color: #888;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #292929;
+            margin-top: 50px;
+            padding-top: 20px;
+            color: #666;
+            font-family: "DM Mono", monospace;
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           REVEAL
+        ===================================================== */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: .8s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 991px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                display: block;
+            }
+
+            .hero-left {
+                padding: 120px 0 60px;
+            }
+
+            .engineering-visual {
+                min-height: 500px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card.large {
+                min-height: 400px;
+            }
+
+            .number-box {
+                border-bottom: 1px solid var(--line);
+                border-right: 0;
+            }
+
+            .number-box:last-child {
+                border-bottom: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .hero-heading {
+                font-size: 64px;
+                letter-spacing: -5px;
+            }
+
+            .hero-heading .outline {
+                -webkit-text-stroke: 1px var(--black);
+            }
+
+            .hero-copy {
+                font-size: 15px;
+            }
+
+            .visual-ring {
+                width: 280px;
+                height: 280px;
+            }
+
+            .visual-core {
+                width: 90px;
+                height: 90px;
+            }
+
+            .section {
+                padding: 90px 0;
+            }
+
+            .services-section,
+            .contact-section {
+                padding: 90px 0;
+            }
+
+            .manifesto {
+                padding: 90px 0;
+            }
+
+            .manifesto-text {
+                letter-spacing: -4px;
+            }
+
+            .contact-title {
+                letter-spacing: -5px;
+            }
+
+            .project-name {
+                letter-spacing: -2px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     TECHNICAL GRID
+===================================================== -->
+
+<div class="technical-grid"></div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="site-nav">
+
+    <div class="container-wide nav-inner">
+
+        <a href="#home" class="logo">
+            YMAZ<span class="logo-mark"></span>
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="#about">About</a>
+            <a href="#services">Capabilities</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+
+            <a href="#contact" class="nav-contact">
+                Start Project
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="container-wide">
+
+        <div class="row g-0 align-items-stretch">
+
+            <div class="col-lg-7">
+
+                <div class="hero-left reveal">
+
+                    <div class="eyebrow">
+                        YMAZ / <span>ENGINEERING LAB</span> / 001
+                    </div>
+
+                    <h1 class="hero-heading">
+
+                        <span>BUILD</span><br>
+
+                        <span class="outline">THE</span><br>
+
+                        <span class="lime">UNSEEN.</span>
+
+                    </h1>
+
+                    <p class="hero-copy">
+
+                        We design and engineer software, hardware,
+                        robotics and intelligent systems for companies
+                        building what comes next.
+
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="#services" class="btn-black">
+                            Explore Capabilities
+                            <i class="bi bi-arrow-down ms-2"></i>
+                        </a>
+
+                        <a href="#contact" class="btn-white">
+                            Start A Conversation
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-5">
+
+                <div class="engineering-visual reveal">
+
+                    <div class="visual-ring"></div>
+
+                    <div class="visual-core"></div>
+
+                    <div class="visual-line line-horizontal"></div>
+
+                    <div class="visual-line line-vertical"></div>
+
+
+                    <div class="visual-code code-one">
+                        SYSTEM.YMAZ<br>
+                        NODE_001<br>
+                        CORE.ACTIVE<br>
+                        SIGNAL: 98.42%
+                    </div>
+
+
+                    <div class="visual-code code-two">
+                        X: 024.82<br>
+                        Y: 081.44<br>
+                        Z: 012.09<br>
+                        STATUS: ONLINE
+                    </div>
+
+
+                    <div class="visual-label label-top">
+                        / SYSTEM 01
+                    </div>
+
+                    <div class="visual-label label-bottom">
+                        SOFTWARE × HARDWARE × ROBOTICS
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TICKER
+===================================================== -->
+
+<div class="ticker">
+
+    <div class="ticker-track">
+
+        <div class="ticker-item">
+            SOFTWARE ENGINEERING
+        </div>
+
+        <div class="ticker-item">
+            ROBOTICS
+        </div>
+
+        <div class="ticker-item">
+            HARDWARE DESIGN
+        </div>
+
+        <div class="ticker-item">
+            AUTOMATION
+        </div>
+
+        <div class="ticker-item">
+            ARTIFICIAL INTELLIGENCE
+        </div>
+
+        <div class="ticker-item">
+            3D ENGINEERING
+        </div>
+
+        <div class="ticker-item">
+            SOFTWARE ENGINEERING
+        </div>
+
+        <div class="ticker-item">
+            ROBOTICS
+        </div>
+
+        <div class="ticker-item">
+            HARDWARE DESIGN
+        </div>
+
+        <div class="ticker-item">
+            AUTOMATION
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="section" id="about">
+
+    <div class="container-wide">
+
+        <div class="row">
+
+            <div class="col-lg-2 reveal">
+
+                <div class="section-number">
+                    002 / ABOUT
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-10 reveal">
+
+                <h2 class="intro-title">
+
+                    Technology is not a collection
+                    of <em>parts.</em>
+
+                    <br><br>
+
+                    It's a system.
+
+                </h2>
+
+                <div class="row mt-5">
+
+                    <div class="col-lg-7">
+
+                        <p class="intro-text">
+
+                            YMAZ connects disciplines that are usually
+                            separated. Software developers work alongside
+                            hardware engineers. Product designers work
+                            alongside robotics specialists.
+
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-5">
+
+                        <p class="intro-text">
+
+                            The result is technology designed as one
+                            connected system — from the first line of
+                            code to the final physical product.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="services-section" id="services">
+
+    <div class="container-wide">
+
+        <div class="row">
+
+            <div class="col-lg-2">
+
+                <div class="section-number dark-number">
+                    003 / CAPABILITIES
+                </div>
+
+            </div>
+
+            <div class="col-lg-10">
+
+                <h2 class="services-heading reveal">
+
+                    WHAT<br>
+                    WE DO.
+
+                </h2>
+
+
+                <div class="service-grid">
+
+                    <!-- SOFTWARE -->
+
+                    <div class="service-card large reveal">
+
+                        <div class="service-index">
+                            01 / DIGITAL
+                        </div>
+
+                        <div class="service-icon">
+                            <i class="bi bi-code-square"></i>
+                        </div>
+
+                        <h3>
+                            Software Engineering
+                        </h3>
+
+                        <p>
+
+                            Web platforms, enterprise systems,
+                            APIs, cloud applications and custom
+                            digital products engineered for scale.
+
+                        </p>
+
+                        <div class="service-watermark">
+                            01
+                        </div>
+
+                    </div>
+
+
+                    <!-- HARDWARE -->
+
+                    <div class="service-card reveal">
+
+                        <div class="service-index">
+                            02 / PHYSICAL
+                        </div>
+
+                        <div class="service-icon">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+
+                        <h3>
+                            Hardware
+                        </h3>
+
+                        <p>
+
+                            Connected devices, embedded systems,
+                            electronics and intelligent hardware.
+
+                        </p>
+
+                        <div class="service-watermark">
+                            02
+                        </div>
+
+                    </div>
+
+
+                    <!-- ROBOTICS -->
+
+                    <div class="service-card reveal">
+
+                        <div class="service-index">
+                            03 / AUTONOMOUS
+                        </div>
+
+                        <div class="service-icon">
+                            <i class="bi bi-robot"></i>
+                        </div>
+
+                        <h3>
+                            Robotics
+                        </h3>
+
+                        <p>
+
+                            Intelligent machines, automation and
+                            robotic systems built for real environments.
+
+                        </p>
+
+                        <div class="service-watermark">
+                            03
+                        </div>
+
+                    </div>
+
+
+                    <!-- CAD -->
+
+                    <div class="service-card reveal">
+
+                        <div class="service-index">
+                            04 / DESIGN
+                        </div>
+
+                        <div class="service-icon">
+                            <i class="bi bi-boxes"></i>
+                        </div>
+
+                        <h3>
+                            3D & CAD
+                        </h3>
+
+                        <p>
+
+                            Digital product modelling, CAD systems,
+                            prototypes and engineering visualisation.
+
+                        </p>
+
+                        <div class="service-watermark">
+                            04
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     NUMBERS
+===================================================== -->
+
+<section class="numbers">
+
+    <div class="container-wide">
+
+        <div class="row g-0">
+
+            <div class="col-md-3 number-box reveal">
+
+                <div class="big-number">
+                    09+
+                </div>
+
+                <div class="number-label">
+                    Years Engineering
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3 number-box reveal">
+
+                <div class="big-number">
+                    50+
+                </div>
+
+                <div class="number-label">
+                    Projects Built
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3 number-box reveal">
+
+                <div class="big-number">
+                    15+
+                </div>
+
+                <div class="number-label">
+                    Technologies
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3 number-box reveal">
+
+                <div class="big-number">
+                    ∞
+                </div>
+
+                <div class="number-label">
+                    Possibilities
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROJECTS
+===================================================== -->
+
+<section class="section" id="projects">
+
+    <div class="container-wide">
+
+        <div class="row mb-5">
+
+            <div class="col-lg-2">
+
+                <div class="section-number">
+                    004 / PROJECTS
+                </div>
+
+            </div>
+
+            <div class="col-lg-10">
+
+                <h2 class="intro-title">
+                    Selected<br>
+                    <em>systems.</em>
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="project-row reveal">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-2">
+
+                    <div class="project-category">
+                        Software
+                    </div>
+
+                </div>
+
+                <div class="col-md-8">
+
+                    <div class="project-name">
+                        Enterprise Digital Platform
+                    </div>
+
+                </div>
+
+                <div class="col-md-2 text-md-end">
+
+                    <div class="project-arrow">
+                        ↗
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project-row reveal">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-2">
+
+                    <div class="project-category">
+                        Robotics
+                    </div>
+
+                </div>
+
+                <div class="col-md-8">
+
+                    <div class="project-name">
+                        Autonomous Machine System
+                    </div>
+
+                </div>
+
+                <div class="col-md-2 text-md-end">
+
+                    <div class="project-arrow">
+                        ↗
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project-row reveal">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-2">
+
+                    <div class="project-category">
+                        Hardware
+                    </div>
+
+                </div>
+
+                <div class="col-md-8">
+
+                    <div class="project-name">
+                        Connected Industrial Device
+                    </div>
+
+                </div>
+
+                <div class="col-md-2 text-md-end">
+
+                    <div class="project-arrow">
+                        ↗
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="project-row reveal">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-2">
+
+                    <div class="project-category">
+                        Automation
+                    </div>
+
+                </div>
+
+                <div class="col-md-8">
+
+                    <div class="project-name">
+                        Intelligent Workflow Engine
+                    </div>
+
+                </div>
+
+                <div class="col-md-2 text-md-end">
+
+                    <div class="project-arrow">
+                        ↗
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MANIFESTO
+===================================================== -->
+
+<section class="manifesto">
+
+    <div class="container-wide">
+
+        <div class="manifesto-text reveal">
+
+            DON'T JUST<br>
+
+            <span>imagine</span><br>
+
+            IT.<br>
+
+            ENGINEER IT.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="contact-section" id="contact">
+
+    <div class="container-wide">
+
+        <div class="row g-5">
+
+            <div class="col-lg-6 reveal">
+
+                <div class="section-number" style="color:#c8ff00;">
+                    005 / CONTACT
+                </div>
+
+                <h2 class="contact-title mt-5">
+
+                    LET'S<br>
+
+                    <span>BUILD.</span>
+
+                </h2>
+
+                <p class="contact-copy">
+
+                    Have a product, machine, platform or impossible
+                    problem in mind? Tell us what you're working on.
+
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-6 reveal">
+
+                <form class="contact-form" id="contactForm">
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            Name
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Your name"
+                            required>
+
+                    </div>
+
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            class="form-control"
+                            placeholder="you@company.com"
+                            required>
+
+                    </div>
+
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            What are you building?
+                        </label>
+
+                        <select class="form-select">
+
+                            <option selected>
+                                Select an area
+                            </option>
+
+                            <option>
+                                Software
+                            </option>
+
+                            <option>
+                                Hardware
+                            </option>
+
+                            <option>
+                                Robotics
+                            </option>
+
+                            <option>
+                                Automation
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            Message
+                        </label>
+
+                        <textarea
+                            class="form-control"
+                            rows="4"
+                            placeholder="Tell us about the project..."
+                            required></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-light rounded-0 px-4 py-3 fw-bold">
+
+                        SEND ENQUIRY
+
+                        <i class="bi bi-arrow-up-right ms-2"></i>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container-wide">
+
+        <div class="row g-5">
+
+            <div class="col-lg-6">
+
+                <div class="footer-logo">
+                    YMAZ<span class="logo-mark"></span>
+                </div>
+
+                <p class="footer-desc">
+
+                    Software × Hardware × Robotics.
+
+                    <br>
+
+                    Engineering systems for the next generation.
+
+                </p>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <div class="footer-heading">
+                    Navigate
+                </div>
+
+                <a href="#home" class="footer-link">
+                    Home
+                </a>
+
+                <a href="#about" class="footer-link">
+                    About
+                </a>
+
+                <a href="#services" class="footer-link">
+                    Capabilities
+                </a>
+
+                <a href="#projects" class="footer-link">
+                    Projects
+                </a>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <div class="footer-heading">
+                    Connect
+                </div>
+
+                <a href="#contact" class="footer-link">
+                    Contact
+                </a>
+
+                <a href="#careers" class="footer-link">
+                    Careers
+                </a>
+
+                <a href="#" class="footer-link">
+                    LinkedIn
+                </a>
+
+            </div>
+
+
+            <div class="col-lg-2">
+
+                <div class="footer-heading">
+                    Location
+                </div>
+
+                <div class="footer-desc">
+                    India
+                    <br><br>
+                    hello@ymaz.org
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom
+                    d-flex
+                    justify-content-between
+                    flex-wrap
+                    gap-3">
+
+            <span>
+                © 2026 YMAZ TECHNOLOGIES
+            </span>
+
+            <span>
+                SYSTEM STATUS: ONLINE
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     BOOTSTRAP
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const revealItems =
+        document.querySelectorAll(".reveal");
+
+    const observer =
+        new IntersectionObserver(
+            function(entries) {
+
+                entries.forEach(function(entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealItems.forEach(function(item) {
+
+        observer.observe(item);
+
+    });
+
+
+    /* =====================================================
+       CONTACT FORM
+    ===================================================== */
+
+    document
+        .getElementById("contactForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Thank you. Your project enquiry has been received."
+            );
+
+            this.reset();
+
+        });
+
+
+    /* =====================================================
+       SIMPLE MOUSE PARALLAX
+    ===================================================== */
+
+    const visual =
+        document.querySelector(".engineering-visual");
+
+    if (visual) {
+
+        visual.addEventListener("mousemove", function(event) {
+
+            const rect =
+                visual.getBoundingClientRect();
+
+            const x =
+                (event.clientX - rect.left) / rect.width - 0.5;
+
+            const y =
+                (event.clientY - rect.top) / rect.height - 0.5;
+
+            const core =
+                visual.querySelector(".visual-core");
+
+            const ring =
+                visual.querySelector(".visual-ring");
+
+            core.style.marginLeft =
+                `${x * 20}px`;
+
+            core.style.marginTop =
+                `${y * 20}px`;
+
+            ring.style.marginLeft =
+                `${x * 10}px`;
+
+            ring.style.marginTop =
+                `${y * 10}px`;
+
+        });
+
+    }
+
+</script>
+
+</body>
+</html>
+```
